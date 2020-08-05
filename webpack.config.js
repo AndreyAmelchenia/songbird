@@ -60,6 +60,7 @@ module.exports = {
   devServer: {
     port: 1986,
     hot: isDevelop,
+    historyApiFallback: true,
   },
   devtool: isDevelop ? 'source-map' : '',
   module: {
