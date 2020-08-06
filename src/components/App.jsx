@@ -3,11 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import {
   Container,
 } from 'react-bootstrap';
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
-import Main from '../main/Main';
-import Game from '../main/Game';
-import Error from '../main/Error';
+import Header from './header/Header';
+import Footer from './footer/Footer';
+import Main from './main/Main';
+import Game from './main/Game';
+import Error from './main/Error';
 
 const App = () => (
   <Container>

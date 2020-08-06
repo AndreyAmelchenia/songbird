@@ -3,7 +3,7 @@ import {
   Row, Col, Button,
 } from 'react-bootstrap';
 import Card from './card/Card';
-import AnswerBlock from './answerBlock/AnswerBlock';
+import AnswerBlock from '../../containers/answerBlock';
 import AnswerCard from './answerBlock/answerCard/AnswerCard';
 
 const Main = () => (

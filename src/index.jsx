@@ -1,11 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from './app/App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
+import App from './components/App';
 import './style.scss';
 
-ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('root'));
+const store = createStore(reducer,
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+ReactDOM.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root'),
+);
