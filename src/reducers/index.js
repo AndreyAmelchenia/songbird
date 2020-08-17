@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import birds from './listBirds';
+// import birds from '../selectors/listBirds';
+import visibilityBird from './visibilityBird';
+import answers from './answers';
 
 const rootReducer = combineReducers({
-  birds,
+  answers,
+  // birds,
+  visibilityBird,
 });
 
 export default rootReducer;
