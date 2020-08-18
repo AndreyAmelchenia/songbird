@@ -5,11 +5,10 @@ import Card from './card/Card';
 import AnswerBlock from './answerBlock/AnswerBlock';
 import AnswerCard from './answerBlock/answerCard/AnswerCard';
 import birdsArr from '../../selectors/listBirds';
-// import birdsData from '../../constants/birdsData';
 
-// const birdsDefault = birdsData.filter((elem) => elem.id === 1);
 const Main = () => {
   const birds = useSelector(birdsArr);
+  const disableButton = useSelector((state) => state.disableButton);
   return (
     <>
       <Row>
@@ -25,7 +24,16 @@ const Main = () => {
       </Row>
       <Row>
         <Col>
-          <Button form="form" type="submit" variant="outline-secondary" className="w-100 mb-2">Next</Button>
+          <Button
+            disabled={disableButton}
+            form="form"
+            type="submit"
+            variant="outline-secondary"
+            className="w-100 mb-2"
+          >
+            Next
+
+          </Button>
         </Col>
       </Row>
     </>

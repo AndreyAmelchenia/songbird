@@ -1,7 +1,5 @@
-// import { COMPLETE_ALL_BIRDS, COMPLETE_BIRDS } from '../constants/ActionTypes';
 import { createSelector } from 'reselect';
 import birdsData from '../constants/birdsData';
-// const birdsDefault = birdsData.filter((elem) => elem.id === 1);
 
 const shuffled = (arr) => arr
   .map((a) => ({ sort: Math.random(), value: a }))

@@ -2,32 +2,33 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Answer from './answer/Answer';
-import { setTrueAnswer } from '../../../actions';
+import {
+  setTrueAnswer, setDisableButton, setDisableLink, setVisibilityNone,
+} from '../../../actions';
 
 const AnswerBlock = ({ birds }) => {
-  const answers = useSelector((state) => state.answers);
+  const { answers, score } = useSelector((state) => ({
+    answers: state.answers,
+    score: state.score.score,
+  }));
+
   const history = useHistory();
+  const { question } = useLocation().state;
   const dispatch = useDispatch();
-  const nextId = (arr) => {
-    let id;
-    arr.forEach((e, index) => {
-      if (e.answer) {
-        id = index;
-      }
-    });
-    return id + 1;
-  };
   return (
     <Form
       id="form"
       onSubmit={(e) => {
-        if (nextId(answers) === answers.length) {
-          history.push('/finish', { score: 123 });
+        if (question === answers.length - 1) {
+          history.push('/finish', { score });
+          dispatch(setDisableLink(false));
         } else {
-          history.push(`${history.location.pathname}`, { question: nextId(answers) });
-          dispatch(setTrueAnswer(nextId(answers)));
+          history.push(`${history.location.pathname}`, { question: question + 1, score });
+          dispatch(setTrueAnswer(question + 1));
+          dispatch(setDisableButton(true));
+          dispatch(setVisibilityNone());
         }
         e.preventDefault();
       }}

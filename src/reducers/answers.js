@@ -5,7 +5,6 @@ import { URL } from '../constants/Url';
 const pathName = window.location.pathname.slice(1);
 const question = window.history.state !== null
 && window.history.state.state !== null ? window.history.state.state.question : 0;
-// const finish = { name: 'finish', answer: false };
 const shuffled = (arr) => arr
   .map((a) => ({ sort: Math.random(), value: a }))
   .sort((a, b) => a.sort - b.sort)
