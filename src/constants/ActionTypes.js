@@ -7,3 +7,4 @@ export const SET_DISABLE_BUTTON = 'SET_DISABLE_BUTTON';
 export const SET_SCORE = 'SET_SCORE';
 export const SET_SCORE_QUESTION = 'SET_SCORE_QUESTION';
 export const SET_NEW_GAME = 'SET_NEW_GAME';
+export const FETCH_SOUND_BIRDS = 'FETCH_SOUND_BIRDS';

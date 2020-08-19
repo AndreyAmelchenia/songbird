@@ -4,6 +4,7 @@ import visibilityBird from './visibilityBird';
 import answers from './answers';
 import disableButton from './disableButton';
 import score from './score';
+import { soundBirds } from './soundBirds';
 
 const rootReducer = combineReducers({
   answers,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   disableLink,
   disableButton,
   score,
+  soundBirds,
 });
 
 export default rootReducer;
