@@ -9,6 +9,4 @@ export const setDisableButton = (disable) => ({ type: types.SET_DISABLE_BUTTON, 
 export const setScore = () => ({ type: types.SET_SCORE });
 export const setScoreQuestion = () => ({ type: types.SET_SCORE_QUESTION });
 export const setNewGame = () => ({ type: types.SET_NEW_GAME });
-
-
 export const fetchSoundBirds = (sound) => ({ type: types.FETCH_SOUND_BIRDS, sound });
