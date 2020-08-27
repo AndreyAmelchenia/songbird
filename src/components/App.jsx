@@ -4,9 +4,9 @@ import { Switch, Route, useParams } from 'react-router-dom';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Main from './main/Main';
-import Game from './main/Game';
+import Home from './main/Home';
 import Error from './main/Error';
-import { URL } from '../constants/Url';
+import URL from '../constants/Url';
 import Finish from './main/Finish';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          <Game />
+          <Home />
         </Route>
         <Route path="/finish">
           <Finish />
@@ -25,7 +25,6 @@ const App = () => {
           {URL.indexOf(url) !== -1 ? <Main /> : <Error />}
         </Route>
       </Switch>
-
       <Footer />
     </Container>
   );

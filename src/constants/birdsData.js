@@ -12,7 +12,7 @@ const birdsData = [
     id: 2,
     name: 'Журавль',
     species: 'Grus grus',
-    description: 'Звуки, издаваемые журавлем, похожи на звонкое «кур-лы – кур-лы». Журавли чаще всего поют дуэтом – одна птица начинает запев со слога «кур», а вторая подхватывает «лы». Если птица поёт одна, то она издает только звук «кур».',
+    description: 'https://ru.wikipedia.org/wiki/Grus',
     image: 'https://live.staticflickr.com/65535/49221158846_b0b69a58f1.jpg',
     audio: 'https://www.xeno-canto.org/sounds/uploaded/BLMSIUFTFU/XC512582-190604_1087_Grus_tok.mp3',
   },

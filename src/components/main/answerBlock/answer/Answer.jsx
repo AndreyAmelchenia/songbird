@@ -8,13 +8,12 @@ import {
 
 const Answer = ({ bird }) => {
   const dispatch = useDispatch();
-  const trueAnswer = useSelector((state) => state.answers).filter((e) => e.answer);
   const disableButton = useSelector((state) => state.disableButton);
   return (
     <Form.Check
       disabled={!disableButton}
       onClick={() => {
-        if (trueAnswer[0].name === bird.name) {
+        if (bird.answer) {
           dispatch(setDisableButton(false));
           dispatch(setScore());
         } else {
@@ -22,17 +21,17 @@ const Answer = ({ bird }) => {
         }
         dispatch(setVisibilityBird(bird));
       }}
-      className={trueAnswer[0].name === bird.name ? 'answer_check answer_check_true' : 'answer_check'}
+      className={bird.answer ? 'answer_check answer_check_true' : 'answer_check'}
       type="radio"
       label={bird.name}
-      id={`${bird.id}-${bird.name}`}
+      id={bird.name}
     />
   );
 };
 Answer.propTypes = {
   bird: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    answer: PropTypes.bool.isRequired,
   }).isRequired,
 
 };

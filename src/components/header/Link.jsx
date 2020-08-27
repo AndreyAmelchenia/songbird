@@ -3,11 +3,13 @@ import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setAnswer, setDisableLink } from '../../actions/index';
+import { setDisableLink, setNewGame, setDisableButton } from '../../actions/index';
+import { fetchBirds } from '../../reducers/soundBirds';
 
-const Link = ({ name, id }) => {
+const Link = ({ name }) => {
   const dispatch = useDispatch();
   const disable = useSelector((state) => state.disableLink);
+
   return (
     <>
       {name === 'home' ? (
@@ -26,8 +28,10 @@ const Link = ({ name, id }) => {
           as={NavLink}
           href={`#${name}`}
           onClick={() => {
-            dispatch(setAnswer(id));
             dispatch(setDisableLink(true));
+            dispatch(fetchBirds(name));
+            dispatch(setNewGame());
+            dispatch(setDisableButton(true));
           }}
           to={{ pathname: `/${name}`, state: { question: 0, score: 0 } }}
         >
@@ -41,6 +45,5 @@ const Link = ({ name, id }) => {
 
 Link.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
 };
 export default Link;

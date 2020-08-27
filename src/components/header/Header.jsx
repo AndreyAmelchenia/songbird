@@ -3,12 +3,14 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LinkNav from './Link';
-import { URL } from '../../constants/Url';
-import { fetchSound } from '../../reducers/soundBirds';
+import URL from '../../constants/Url';
+import {
+  setDisableLink, setNewGame, setDisableButton, resetAnswerBlock, resetSoundBirds,
+} from '../../actions/index';
 
 const Header = () => {
-  const { score } = useSelector((state) => state.score);
   const dispatch = useDispatch();
+  const { score } = useSelector((state) => state.score);
   return (
     <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" sticky="top">
       <Navbar.Toggle className="col-auto order-0" aria-controls="basic-navbar-nav" />
@@ -17,13 +19,18 @@ const Header = () => {
       </Navbar.Text>
       <Navbar.Brand
         as={NavLink}
-        onClick={() => dispatch(fetchSound())}
+        onClick={() => {
+          dispatch(setDisableLink(false));
+          dispatch(setNewGame());
+          dispatch(setDisableButton(true));
+          dispatch(resetAnswerBlock());
+          dispatch(resetSoundBirds());
+        }}
         href="#home"
         exact
         to="/"
       >
-        HOME
-
+        Song Bird
       </Navbar.Brand>
       <Navbar.Collapse className="order-3 justify-content-end" id="basic-navbar-nav">
         <Nav>

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import disableLink from './disableLink';
 import visibilityBird from './visibilityBird';
-import answers from './answers';
 import disableButton from './disableButton';
 import score from './score';
 import { soundBirds } from './soundBirds';
+import { answers } from './answersBlock';
 
 const rootReducer = combineReducers({
   answers,
@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
   disableButton,
   score,
   soundBirds,
+
 });
 
 export default rootReducer;

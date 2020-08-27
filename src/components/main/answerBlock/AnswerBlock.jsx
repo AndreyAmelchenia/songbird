@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import Answer from './answer/Answer';
 import {
-  setTrueAnswer, setDisableButton, setDisableLink, setVisibilityNone,
+  setDisableButton, setDisableLink, setVisibilityNone, resetAnswerBlock, resetSoundBirds,
 } from '../../../actions';
 
 const AnswerBlock = ({ birds }) => {
-  const { answers, score } = useSelector((state) => ({
-    answers: state.answers,
+  const { soundBirds, score } = useSelector((state) => ({
+    soundBirds: state.soundBirds,
     score: state.score.score,
   }));
 
@@ -21,21 +21,21 @@ const AnswerBlock = ({ birds }) => {
     <Form
       id="form"
       onSubmit={(e) => {
-        if (question === answers.length - 1) {
+        if (question === soundBirds.length - 1) {
           history.push('/finish', { score });
           dispatch(setDisableLink(false));
+          dispatch(resetAnswerBlock());
+          dispatch(resetSoundBirds());
         } else {
           history.push(`${history.location.pathname}`, { question: question + 1, score });
-          dispatch(setTrueAnswer(question + 1));
           dispatch(setDisableButton(true));
           dispatch(setVisibilityNone());
         }
         e.preventDefault();
       }}
     >
-      {console.log('question', history.location.state)}
       {birds.map((bird) => (
-        <Answer key={`${bird.id}-${bird.name}`} bird={bird} />
+        <Answer key={bird.name} bird={bird} />
       ))}
     </Form>
   );
@@ -43,7 +43,6 @@ const AnswerBlock = ({ birds }) => {
 AnswerBlock.propTypes = {
   birds: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
   })).isRequired,
 };
 

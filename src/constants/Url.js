@@ -1,9 +1,2 @@
-export const HOME = 'home';
-export const ONE = 'one';
-export const TWO = 'two';
-export const THREE = 'three';
-export const FOUR = 'four';
-export const FIVE = 'five';
-export const SIX = 'six';
-export const GAME = 'game';
-export const URL = ['home', 'one', 'two', 'three', 'four', 'five', 'six'];
+const URL = ['home', 'belarus', 'russian', 'ukraine', 'poland', 'Lithuania', 'Latvia'];
+export default URL;

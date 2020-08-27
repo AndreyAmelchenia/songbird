@@ -1,17 +1,24 @@
 import React from 'react';
-import {
-  Col, Image, Button,
-} from 'react-bootstrap';
+import { Col, Image, Button } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setDisableLink, setNewGame } from '../../../actions';
 
 const Card = () => {
   const dispatch = useDispatch();
+  const { question } = useLocation().state;
+  const answer = useSelector((state) => state.answers[question].find((e) => e.answer));
+  const visibleAnswer = useSelector((state) => state.disableButton);
   return (
     <>
       <Col className="col-md-5 align-self-center">
-        <Image src="../../assets/img/sample.jpg" fluid thumbnail />
+        {console.log(answer)}
+        <Image
+          src={visibleAnswer ? '../../assets/img/hotpng.png' : answer.image}
+          fluid
+          thumbnail
+        />
       </Col>
       <Col className="col-md-7 col-12 align-self-center">
         <Button
@@ -22,12 +29,13 @@ const Card = () => {
         >
           Закончит игру
         </Button>
-        <h1>Name</h1>
+        <h1>{visibleAnswer ? '*****' : answer.name}</h1>
         <hr />
         <AudioPlayer
+          autoPlay
           showJumpControls={false}
           layout="horizontal-reverse"
-          src="../../assets/sound/Aria.mp3"
+          src={answer.audio}
         />
       </Col>
     </>

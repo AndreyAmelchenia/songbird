@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useLocation } from 'react-router-dom';
 import Card from './card/Card';
 import AnswerBlock from './answerBlock/AnswerBlock';
 import AnswerCard from './answerBlock/answerCard/AnswerCard';
-import birdsArr from '../../selectors/listBirds';
+import { fetchAnswerBlock } from '../../reducers/answersBlock';
 
 const Main = () => {
-  const birds = useSelector(birdsArr);
-  const disableButton = useSelector((state) => state.disableButton);
+  const dispatch = useDispatch();
+  const list = async (arr, cnt) => dispatch(fetchAnswerBlock(arr, cnt));
+  const { question } = useLocation().state;
+  const { url } = useParams();
+  const { answers, soundBirds, disableButton } = useSelector((state) => state);
+  useEffect(() => {
+    if (question === 0 && soundBirds.length !== 0) {
+      list(soundBirds[question], url);
+      list(soundBirds[question + 1], url);
+    } else if (question !== 0) {
+      list(soundBirds[question], url);
+    }
+  }, [soundBirds]);
+  useEffect(() => {
+    if (question !== 0 && soundBirds.length > question + 1) {
+      list(soundBirds[question + 1], url);
+    }
+  }, [question]);
+
+  if (answers.length === 0 || !answers[question]) {
+    return <div>Null</div>;
+  }
   return (
     <>
       <Row>
@@ -16,7 +37,7 @@ const Main = () => {
       </Row>
       <Row>
         <Col className="col-md-5 col-12">
-          <AnswerBlock birds={birds} />
+          <AnswerBlock birds={answers[question]} />
         </Col>
         <Col>
           <AnswerCard />
@@ -32,7 +53,6 @@ const Main = () => {
             className="w-100 mb-2"
           >
             Next
-
           </Button>
         </Col>
       </Row>

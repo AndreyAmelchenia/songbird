@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
-import AudioPlayer from 'react-h5-audio-player';
+import ReactAudioPlayer from 'react-audio-player';
 import { useSelector } from 'react-redux';
 
 const AnswerCard = () => {
@@ -25,18 +25,18 @@ const AnswerCard = () => {
           </Row>
           <Row className="mb-2 mt-2">
             <Col>
-              <AudioPlayer
-                showJumpControls={false}
-                layout="horizontal-reverse"
+              <ReactAudioPlayer
+                controls
+                // preload="metadata"
+                // showJumpControls={false}
+                // layout="horizontal-reverse"
                 src={audio}
               />
             </Col>
           </Row>
           <Row>
             <Col>
-              <p>
-                {description}
-              </p>
+              <a href={description} target="_blank" rel="noreferrer">{description}</a>
             </Col>
           </Row>
         </>
