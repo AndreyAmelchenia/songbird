@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Image, Button } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDisableLink, setNewGame } from '../../../actions';
@@ -12,7 +12,7 @@ const Card = () => {
   const visibleAnswer = useSelector((state) => state.disableButton);
   return (
     <>
-      <Col className="col-md-5 align-self-center">
+      <Col className="col-md-5 my_card p-2">
         {console.log(answer)}
         <Image
           src={visibleAnswer ? '../../assets/img/hotpng.png' : answer.image}
@@ -20,8 +20,11 @@ const Card = () => {
           thumbnail
         />
       </Col>
-      <Col className="col-md-7 col-12 align-self-center">
+      <Col className="col-md-7 col-12 my_card_answer p-2">
         <Button
+          variant="danger"
+          as={NavLink}
+          to="/"
           onClick={() => {
             dispatch(setDisableLink(false));
             dispatch(setNewGame());
@@ -30,8 +33,8 @@ const Card = () => {
           Закончит игру
         </Button>
         <h1>{visibleAnswer ? '*****' : answer.name}</h1>
-        <hr />
         <AudioPlayer
+          className="my_card_player"
           autoPlay
           showJumpControls={false}
           layout="horizontal-reverse"

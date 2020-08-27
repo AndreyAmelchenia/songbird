@@ -3,7 +3,9 @@ import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setDisableLink, setNewGame, setDisableButton } from '../../actions/index';
+import {
+  setDisableLink, setNewGame, setDisableButton, setVisibilityNone,
+} from '../../actions/index';
 import { fetchBirds } from '../../reducers/soundBirds';
 
 const Link = ({ name }) => {
@@ -32,6 +34,7 @@ const Link = ({ name }) => {
             dispatch(fetchBirds(name));
             dispatch(setNewGame());
             dispatch(setDisableButton(true));
+            dispatch(setVisibilityNone());
           }}
           to={{ pathname: `/${name}`, state: { question: 0, score: 0 } }}
         >

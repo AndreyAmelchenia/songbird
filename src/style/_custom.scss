@@ -1,6 +1,8 @@
 $theme-colors: (
     "info": tomato,
-    "danger": teal
+    "danger": teal,
+    "dark": teal,
+    "text-muted":teal,
 );
 
 @import "~bootstrap/scss/bootstrap";

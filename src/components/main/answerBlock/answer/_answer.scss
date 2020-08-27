@@ -1,8 +1,14 @@
+.form-check-input:disabled ~ .form-check-label {
+  color: #f5faff;
+}
+
 .answer_check{
   box-sizing: border-box;
+  border-radius: 5px;
   margin: 5px 10px;
-  border: solid grey 2px;
-  // padding-left: 25px;
+  border: solid teal 3px;
+  background: rgba(3, 128, 128, 0.537);
+  
   & label{
     width: 100%;
     display: inline-block;
@@ -12,6 +18,7 @@
     margin-right: 0;
     line-height: 18px;
     user-select: none;
+    
   }
   & label::before{
     content: "";

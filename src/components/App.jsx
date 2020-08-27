@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import { Switch, Route, useParams } from 'react-router-dom';
 import Header from './header/Header';
 import Footer from './footer/Footer';
@@ -12,7 +11,7 @@ import Finish from './main/Finish';
 const App = () => {
   const { url } = useParams();
   return (
-    <Container>
+    <div className="app">
       <Header />
       <Switch>
         <Route exact path="/">
@@ -26,7 +25,7 @@ const App = () => {
         </Route>
       </Switch>
       <Footer />
-    </Container>
+    </div>
   );
 };
 

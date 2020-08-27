@@ -1,5 +1,8 @@
 @import "./style/custom";
 @import "./components/header/header";
 @import "~react-h5-audio-player/src/styles.scss";
+@import "./components/main/main";
 @import "./components/main/answerBlock/answer/answer";
-@import "./components/main/card/card"
+@import "./components/main/card/card";
+@import "./components/main/answerBlock/answerCard/answerCard";
+@import "./components/main/answerBlock/answerBlock"

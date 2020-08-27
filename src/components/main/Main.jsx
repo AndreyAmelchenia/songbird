@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import {
+  Container, Row, Col, Button, Spinner,
+} from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 import Card from './card/Card';
@@ -28,19 +30,19 @@ const Main = () => {
   }, [question]);
 
   if (answers.length === 0 || !answers[question]) {
-    return <div>Null</div>;
+    return <Row className="justify-content-center"><Spinner animation="grow" variant="danger" /></Row>;
   }
   return (
-    <>
+    <Container>
       <Row>
         <Card />
       </Row>
       <Row>
-        <Col className="col-md-5 col-12">
-          <AnswerBlock birds={answers[question]} />
-        </Col>
-        <Col>
+        <Col className="col-md-7 col-12 order-md-1">
           <AnswerCard />
+        </Col>
+        <Col className="col-md-5 col order-md-0 p-2">
+          <AnswerBlock birds={answers[question]} />
         </Col>
       </Row>
       <Row>
@@ -49,14 +51,14 @@ const Main = () => {
             disabled={disableButton}
             form="form"
             type="submit"
-            variant="outline-secondary"
-            className="w-100 mb-2"
+            variant="danger"
+            className="w-100 mb-2 main_button"
           >
             Next
           </Button>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 export default Main;
