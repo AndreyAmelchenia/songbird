@@ -12,12 +12,16 @@ const Answer = ({ bird }) => {
   return (
     <Form.Check
       disabled={!disableButton}
-      onClick={() => {
+      onChange={() => {
         if (bird.answer) {
-          dispatch(setDisableButton(false));
           dispatch(setScore());
         } else {
           dispatch(setScoreQuestion());
+        }
+      }}
+      onClick={() => {
+        if (bird.answer) {
+          dispatch(setDisableButton(false));
         }
         dispatch(setVisibilityBird(bird));
       }}

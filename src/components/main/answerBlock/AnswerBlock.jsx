@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import Answer from './answer/Answer';
 import {
-  setDisableButton, setDisableLink, setVisibilityNone, resetAnswerBlock, resetSoundBirds,
+  setDisableButton, setDisableLink, setVisibilityNone,
+  // resetAnswerBlock, resetSoundBirds,
 } from '../../../actions';
 
 const AnswerBlock = ({ birds }) => {
@@ -16,16 +17,18 @@ const AnswerBlock = ({ birds }) => {
 
   const history = useHistory();
   const { question } = useLocation().state;
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   return (
     <Form
       id="form"
       onSubmit={(e) => {
         if (question === soundBirds.length - 1) {
-          history.push('/finish', { score });
+          history.push('/finish', { score, pathname });
           dispatch(setDisableLink(false));
-          dispatch(resetAnswerBlock());
-          dispatch(resetSoundBirds());
+          // dispatch(resetAnswerBlock());
+          // dispatch(resetSoundBirds());
+          dispatch(setDisableLink(false));
         } else {
           history.push(`${history.location.pathname}`, { question: question + 1, score });
           dispatch(setDisableButton(true));
