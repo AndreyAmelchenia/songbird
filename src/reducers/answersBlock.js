@@ -15,6 +15,7 @@ const shuffled = (arr) => arr
   .map((a) => ({ sort: Math.random(), value: a }))
   .sort((a, b) => a.sort - b.sort)
   .map((a) => a.value);
+const randomInteger = (min, max) => Math.round(min - 0.5 + Math.random() * (max - min + 1));
 
 export const fetchAnswerBlock = (arr, cnt) => async (dispatch) => {
   const arrSound = arr.map((e) => fetchData(urlSound(e, cnt)));
@@ -23,6 +24,7 @@ export const fetchAnswerBlock = (arr, cnt) => async (dispatch) => {
   const img = await Promise.all(arrImg);
   const birdsImg = img.map((e) => e.photos.photo[0]);
   const birdsSounds = sounds.map((e) => e.recordings[0]);
+  const answerTrue = randomInteger(0, birdsSounds.length - 1);
   const birds = birdsSounds.map((e, index) => ({
     id: e.id,
     name: e.en,
@@ -30,7 +32,7 @@ export const fetchAnswerBlock = (arr, cnt) => async (dispatch) => {
     description: `https://ru.wikipedia.org/wiki/${e.en}`,
     audio: `https:${e.sono.small.slice(0, 48)}${e['file-name']}`,
     image: birdsImg[index].url_m,
-    answer: index === 0,
+    answer: index === answerTrue,
   }));
   dispatch({ type: FETCH_ANSWERS_BLOCK, answerBlock: shuffled(birds) });
 };

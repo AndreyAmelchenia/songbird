@@ -3,7 +3,7 @@ import { Col, Image, Button } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
 import { useSelector, useDispatch } from 'react-redux';
-import { setDisableLink, setNewGame } from '../../../actions';
+import { setDisableLink, setNewGame, resetAnswerBlock } from '../../../actions';
 
 const Card = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,6 @@ const Card = () => {
   return (
     <>
       <Col className="col-md-5 my_card p-2">
-        {console.log(answer)}
         <Image
           src={visibleAnswer ? '../../assets/img/hotpng.png' : answer.image}
           fluid
@@ -28,6 +27,7 @@ const Card = () => {
           onClick={() => {
             dispatch(setDisableLink(false));
             dispatch(setNewGame());
+            dispatch(resetAnswerBlock());
           }}
         >
           Закончит игру

@@ -1,10 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
 import AudioPlayer from 'react-h5-audio-player';
 import { useSelector } from 'react-redux';
 
 const AnswerCard = () => {
-  const player = useRef();
   const {
     name, species, image, audio, description,
   } = useSelector((state) => state.visibilityBird);
@@ -18,18 +17,11 @@ const AnswerCard = () => {
             </Col>
             <Col className="align-self-center">
               <hr />
-              <h5
-                onClickCapture={() => {
-                  player.current.audio.current.play();
-                  console.log(player);
-                }}
-              >
+              <h5>
                 {name}
               </h5>
               <hr />
-              <p
-                onClickCapture={() => player.current.audio.current.pause()}
-              >
+              <p>
                 {species}
 
               </p>
@@ -39,7 +31,6 @@ const AnswerCard = () => {
           <Row className="mb-2 mt-2">
             <Col>
               <AudioPlayer
-                ref={player}
                 autoPlayAfterSrcChange={false}
                 className="my_card_player"
                 controls

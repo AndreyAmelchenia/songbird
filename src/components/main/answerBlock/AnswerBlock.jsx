@@ -3,10 +3,10 @@ import { Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
+
 import Answer from './answer/Answer';
 import {
   setDisableButton, setDisableLink, setVisibilityNone,
-  // resetAnswerBlock, resetSoundBirds,
 } from '../../../actions';
 
 const AnswerBlock = ({ birds }) => {
@@ -26,8 +26,6 @@ const AnswerBlock = ({ birds }) => {
         if (question === soundBirds.length - 1) {
           history.push('/finish', { score, pathname });
           dispatch(setDisableLink(false));
-          // dispatch(resetAnswerBlock());
-          // dispatch(resetSoundBirds());
           dispatch(setDisableLink(false));
         } else {
           history.push(`${history.location.pathname}`, { question: question + 1, score });
@@ -38,7 +36,10 @@ const AnswerBlock = ({ birds }) => {
       }}
     >
       {birds.map((bird) => (
-        <Answer key={bird.name} bird={bird} />
+        <Answer
+          key={bird.name}
+          bird={bird}
+        />
       ))}
     </Form>
   );

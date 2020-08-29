@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" sticky="top">
       <Navbar.Toggle className="col-auto order-0" aria-controls="basic-navbar-nav" />
-      <Navbar.Text className="col-lg-6 col-auto order-2 text-right">
+      <Navbar.Text className="col-lg-5 col-auto order-2 text-right">
         {` SCORE: ${score}`}
       </Navbar.Text>
       <Navbar.Brand
