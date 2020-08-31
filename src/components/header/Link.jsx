@@ -28,17 +28,17 @@ const Link = ({ name }) => {
         <Nav.Link
           disabled={disable}
           as={NavLink}
-          href={`#${name}`}
+          href={`#${name.url}`}
           onClick={() => {
             dispatch(setDisableLink(true));
-            dispatch(fetchBirds(name));
+            dispatch(fetchBirds(name.url));
             dispatch(setNewGame());
             dispatch(setDisableButton(true));
             dispatch(setVisibilityNone());
           }}
-          to={{ pathname: `/${name}`, state: { question: 0, score: 0 } }}
+          to={{ pathname: `/${name.url}`, state: { question: 0, score: 0 } }}
         >
-          {name}
+          {name.name}
         </Nav.Link>
       )}
     </>
@@ -47,6 +47,9 @@ const Link = ({ name }) => {
 };
 
 Link.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };
 export default Link;

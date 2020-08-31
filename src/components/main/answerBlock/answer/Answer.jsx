@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -12,12 +12,17 @@ const Answer = ({ bird }) => {
   const disableButton = useSelector((state) => state.disableButton);
   const correct = useRef(null);
   const error = useRef(null);
+  const check = useRef(null);
+  useEffect(() => check.current !== null
+  && check.current.parentElement.addEventListener('click', () => dispatch(setVisibilityBird(bird))), []);
   return (
     <>
       <Form.Check
+        ref={check}
         disabled={!disableButton}
         onChange={() => {
           if (bird.answer) {
+            console.log('правильный ответ: ', bird.name);
             dispatch(setScore());
             correct.current.audioEl.current.play();
           } else {
@@ -29,7 +34,7 @@ const Answer = ({ bird }) => {
           if (bird.answer) {
             dispatch(setDisableButton(false));
           }
-          dispatch(setVisibilityBird(bird));
+          // dispatch(setVisibilityBird(bird));
         }}
         className={bird.answer ? 'answer_check answer_check_true' : 'answer_check'}
         type="radio"

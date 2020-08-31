@@ -36,7 +36,7 @@ const Header = () => {
         <Nav>
           {URL
             .map((element, index) => (
-              <LinkNav key={element} name={element} id={index} />
+              <LinkNav key={element.url} name={element} id={index} />
             ))}
         </Nav>
       </Navbar.Collapse>

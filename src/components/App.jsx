@@ -21,7 +21,7 @@ const App = () => {
           <Finish />
         </Route>
         <Route>
-          {URL.indexOf(url) !== -1 ? <Main /> : <Error />}
+          {URL.map((e) => e.url).indexOf(url) !== -1 ? <Main /> : <Error />}
         </Route>
       </Switch>
       <Footer />
