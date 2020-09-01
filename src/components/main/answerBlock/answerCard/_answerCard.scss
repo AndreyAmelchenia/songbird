@@ -1,0 +1,12 @@
+.my_answerCard{
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  & img {
+    width: auto;
+    height: 100%;
+  }
+  &_player{
+    border-radius: 2.5rem;
+  }
+}

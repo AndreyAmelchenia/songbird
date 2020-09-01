@@ -1,0 +1,54 @@
+.form-check-input:disabled ~ .form-check-label {
+  color: #f5faff;
+}
+
+.answer_check{
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 5px 10px;
+  border: solid teal 3px;
+  background: rgba(3, 128, 128, 0.537);
+  
+  & label{
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 0;
+    line-height: 18px;
+    user-select: none;
+    
+  }
+  & label::before{
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background: url(./assets/img/radio-1.png) 0 0 no-repeat;
+  }
+  & input[type=radio]{
+    display: none;
+  }
+  & input[type=radio]:checked + label:before {
+    background: url(./assets/img/radio-2.png) 0 0 no-repeat;
+    filter: hue-rotate(-45deg);
+  }
+  & label:hover:before {
+      filter: hue-rotate(22deg);
+  }
+  & input[type=radio]:disabled + label:before {
+    	filter: grayscale(100%);
+    }
+}
+
+.answer_check_true{
+  & input[type=radio]:checked + label:before {
+    background: url(./assets/img/radio-2.png) 0 0 no-repeat;
+    filter: hue-rotate(90deg);
+  }
+  
+}
