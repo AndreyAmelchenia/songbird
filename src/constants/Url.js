@@ -1,5 +1,3 @@
-// const URL = ['home', 'belarus', 'russian', 'ukraine', 'poland', 'Lithuania', 'Latvia'];
-
 const URL = [
   {
     url: 'home',
@@ -10,24 +8,24 @@ const URL = [
     name: 'Беларусь',
   },
   {
-    url: 'germany',
-    name: 'Германия',
+    url: 'russian',
+    name: 'Россия',
   },
   {
-    url: 'portugal',
-    name: 'Португалия',
+    url: 'ukraine',
+    name: 'Украина',
   },
   {
-    url: 'china',
-    name: 'Китай',
+    url: 'poland',
+    name: 'Польша',
   },
   {
-    url: 'brazil',
-    name: 'Бразилия',
+    url: 'lithuania',
+    name: 'Латвия',
   },
   {
-    url: 'norway',
-    name: 'Норвегия',
+    url: 'latvia',
+    name: 'Литва',
   },
 ];
 export default URL;

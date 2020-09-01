@@ -34,7 +34,6 @@ const Answer = ({ bird }) => {
           if (bird.answer) {
             dispatch(setDisableButton(false));
           }
-          // dispatch(setVisibilityBird(bird));
         }}
         className={bird.answer ? 'answer_check answer_check_true' : 'answer_check'}
         type="radio"
